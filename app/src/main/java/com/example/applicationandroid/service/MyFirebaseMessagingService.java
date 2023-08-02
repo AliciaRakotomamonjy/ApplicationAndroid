@@ -6,8 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
 import com.example.applicationandroid.R;
+import com.example.applicationandroid.helper.webservice.DeviceTokenAPI;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
+import org.json.JSONException;
 
 import java.util.UUID;
 
@@ -43,7 +46,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
+        DeviceTokenAPI deviceTokenAPI = new DeviceTokenAPI(this);
+        try {
+            deviceTokenAPI.sendDeviceToken(token);
+        } catch (JSONException e) {
+        }
     }
-
-
 }
