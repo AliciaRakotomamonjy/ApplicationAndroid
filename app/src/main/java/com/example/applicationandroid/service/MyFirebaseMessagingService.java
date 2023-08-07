@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
 import com.example.applicationandroid.R;
-import com.example.applicationandroid.helper.webservice.DeviceTokenAPI;
+import com.example.applicationandroid.helper.webservice.DeviceTokenHelper;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -46,7 +46,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
-        DeviceTokenAPI deviceTokenAPI = new DeviceTokenAPI(this);
+        DeviceTokenHelper deviceTokenAPI = new DeviceTokenHelper(this);
         try {
             deviceTokenAPI.sendDeviceToken(token);
         } catch (JSONException e) {
