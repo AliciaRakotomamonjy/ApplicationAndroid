@@ -1,18 +1,13 @@
 package com.example.applicationandroid.ui.setting;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Switch;
 
-import com.example.applicationandroid.MainActivity;
 import com.example.applicationandroid.R;
 
 /**
@@ -30,11 +25,6 @@ public class SettingFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    Switch switcher;
-    boolean nightMODE;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
 
     public SettingFragment() {
         // Required empty public constructor
@@ -70,34 +60,7 @@ public class SettingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_setting, container, false);
-
-        switcher = view.findViewById(R.id.switch1);
-
-        sharedPreferences =((MainActivity) requireActivity()).getAppSharedPreferences();;
-        nightMODE = sharedPreferences.getBoolean("night",false);
-        switcher.setChecked(nightMODE);
-
-        if(nightMODE){
-            switcher.setChecked(true);
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-        switcher.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(nightMODE){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("night",false);
-                }else{
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("night",true);
-                }
-                editor.apply();
-            }
-        });
-
-        return view;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_setting, container, false);
     }
 }

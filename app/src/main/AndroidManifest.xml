@@ -40,16 +40,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-        <activity
-            android:name=".ui.LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.SignInActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.SignUpActivity"
-            android:exported="true" />
     </application>
 
 </manifest>
