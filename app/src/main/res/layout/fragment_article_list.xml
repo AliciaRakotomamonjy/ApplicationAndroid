@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:paddingBottom="?android:attr/actionBarSize"
     tools:context=".ui.home.HomeFragment">
 
     <ProgressBar
@@ -24,26 +25,46 @@
         android:id="@+id/containerArticleList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
-        <LinearLayout
+        <SearchView
+            android:id="@+id/articleRecherche"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:queryHint="@string/placeholderRecherche">
 
-            <SearchView
-                android:id="@+id/articleRecherche"
-                style="@style/SearchViewStyle"
+        </SearchView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:queryHint="@string/placeholderRecherche" />
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/articleRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/categorieLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lobster"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="TextView"
+                    android:textSize="16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/articleRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="548dp"
+                    android:layout_gravity="center">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 
