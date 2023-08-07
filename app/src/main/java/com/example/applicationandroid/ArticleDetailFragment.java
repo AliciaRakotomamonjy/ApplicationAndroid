@@ -80,7 +80,7 @@ public class ArticleDetailFragment extends Fragment {
         titreTextView = root.findViewById(R.id.titreTextView);
         titreTextView.setText(article.getTitre());
         dateTextView = root.findViewById(R.id.dateTextView);
-        dateTextView.setText(Utils.formatDate(article.getDatecreation(),"DD MMMM YYYY", Locale.FRANCE));
+        dateTextView.setText(Utils.formatDate(article.getDatecreation(),"dd MMMM YYYY", Locale.FRANCE));
         descriptionTextView = root.findViewById(R.id.descriptionTextView);
         descriptionTextView.setText(article.getDescription());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);

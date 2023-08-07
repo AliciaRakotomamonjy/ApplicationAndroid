@@ -27,21 +27,26 @@
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:fontFamily="@font/lobster"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/dateTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:fontFamily="@font/roboto_light"
+            android:text="TextView"
+            android:textSize="12sp" />
 
         <EditText
             android:id="@+id/descriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="129dp"
             android:ems="10"
+            android:fontFamily="@font/roboto_light"
             android:gravity="start|top"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:textSize="12sp" />
 
     </LinearLayout>
 </FrameLayout>
