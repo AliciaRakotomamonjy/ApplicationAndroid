@@ -27,6 +27,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.SignInActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.SignUpActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
