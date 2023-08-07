@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
+import android.widget.TextView;
 
 import com.example.applicationandroid.databinding.FragmentArticleDetailBinding;
 import com.example.applicationandroid.databinding.FragmentArticleListBinding;
+import com.example.applicationandroid.helper.Utils;
 import com.example.applicationandroid.modele.Article;
 import com.example.applicationandroid.modele.MediaItem;
 import com.example.applicationandroid.ui.adapter.ArticleListAdapter;
@@ -20,6 +22,7 @@ import com.example.applicationandroid.ui.home.ArticleListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +38,9 @@ public class ArticleDetailFragment extends Fragment {
     FragmentArticleDetailBinding binding;
     HorizontalScrollView gallerie;
     RecyclerView recyclerView;
+    TextView titreTextView;
+    TextView descriptionTextView;
+    TextView dateTextView;
 
     /**
      * Use this factory method to create a new instance of
@@ -71,6 +77,12 @@ public class ArticleDetailFragment extends Fragment {
         View root = binding.getRoot();
         gallerie = root.findViewById(R.id.gallerieView);
         recyclerView = root.findViewById(R.id.articleDetailRecyclerView);
+        titreTextView = root.findViewById(R.id.titreTextView);
+        titreTextView.setText(article.getTitre());
+        dateTextView = root.findViewById(R.id.dateTextView);
+        dateTextView.setText(Utils.formatDate(article.getDatecreation(),"DD MMMM YYYY", Locale.FRANCE));
+        descriptionTextView = root.findViewById(R.id.descriptionTextView);
+        descriptionTextView.setText(article.getDescription());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         loadData();

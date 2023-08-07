@@ -20,6 +20,18 @@ public class Article implements Parcelable {
 
     boolean favori;
 
+    public static final Creator<Article> CREATOR = new Creator<Article>() {
+        @Override
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
+        }
+
+        @Override
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
+
     public boolean isFavori() {
         return favori;
     }

@@ -2,18 +2,24 @@ package com.example.applicationandroid.ui.home;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -66,6 +72,8 @@ public class ArticleListFragment extends Fragment {
 
     private SearchView searchView;
 
+    private TextView categorieLabel;
+
     private ArticleListAdapter adapter;
 
     public ArticleListFragment() {
@@ -113,6 +121,9 @@ public class ArticleListFragment extends Fragment {
         recyclerView = root.findViewById(R.id.articleRecyclerView);
         searchView = root.findViewById(R.id.articleRecherche);
         initSearchView();
+        categorieLabel = root.findViewById(R.id.categorieLabel);
+        categorieLabel.setText(categorieLibelle);
+
         load();
         adapter = new ArticleListAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
@@ -245,6 +256,17 @@ public class ArticleListFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        System.out.println("------------------retour vers home --------------");
+        if (item.getItemId() == android.R.id.home) {
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigateUp();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void showSnackbar(String message) {

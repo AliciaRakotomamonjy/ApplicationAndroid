@@ -44,19 +44,7 @@ public class MainActivity extends AppCompatActivity {
     public void initNavigation(){
 
         navView = findViewById(R.id.nav_view);
-        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId = item.getItemId();
 
-
-                if (itemId == R.id.navigation_home || itemId == R.id.navigation_article_list ) {
-                    navView.setSelectedItemId(R.id.navigation_home);
-                }
-
-                return true;
-            }
-        });
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -67,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
     }
 
     /**
