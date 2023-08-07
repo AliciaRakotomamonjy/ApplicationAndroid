@@ -11,4 +11,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#DDEFE3</color>
     <color name="marron">#B98663</color>
+    <color name="dark_gray">#666666</color>
+    <color name="light_gray">#CCCCCC</color>
 </resources>
