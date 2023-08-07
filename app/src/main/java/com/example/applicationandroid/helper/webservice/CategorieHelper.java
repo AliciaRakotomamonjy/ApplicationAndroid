@@ -1,7 +1,6 @@
 package com.example.applicationandroid.helper.webservice;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -9,37 +8,36 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.applicationandroid.helper.CallBack;
 import com.example.applicationandroid.helper.Constante;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DeviceTokenAPI {
-    public static String url = Constante.API_URL+"/deviceTokens";
+public class CategorieHelper {
+
+    public static String url = Constante.API_URL+"/categories";
 
     private final Context context;
     private final RequestQueue requestQueue;
 
-    public DeviceTokenAPI(Context context) {
+    public CategorieHelper(Context context) {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context.getApplicationContext());
     }
 
-    public void sendDeviceToken(String deviceToken) throws JSONException {
+    public void getListCategorie(final CallBack callBack){
         try {
-            JSONObject requestBody = new JSONObject();
-            requestBody.put("token", deviceToken);
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, requestBody,
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            Log.d("send device token","token send successfully");
+                            callBack.onSuccess(response);
                         }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.e("send device token",error.getMessage());
+                            callBack.onError(error);
                         }
                     });
 
