@@ -80,34 +80,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-    }
-
-    /**
-     * fonction pour regarder le device token et l'envoyer vers le serveur
-     */
-    public void sendToken(){
-        FirebaseMessaging.getInstance().getToken()
-        .addOnCompleteListener(task -> {
-            if (task.isSuccessful() && task.getResult() != null) {
-                String token = task.getResult();
-                Log.d("FCM Token", token);
-                DeviceTokenHelper deviceTokenHelper = new DeviceTokenHelper(this);
-                try {
-                    deviceTokenHelper.sendDeviceToken(token);
-                } catch (JSONException e) {
-                }
-            } else {
-                Log.e("FCM Token", "Erreur lors de la récupération du token");
-            }
-        });
-    }
-
-
-
-
-        // Supprimer cette ligne pour ne pas configurer l'action bar avec le NavController
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
         navView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -153,6 +125,30 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * fonction pour regarder le device token et l'envoyer vers le serveur
+     */
+    public void sendToken(){
+        FirebaseMessaging.getInstance().getToken()
+        .addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult() != null) {
+                String token = task.getResult();
+                Log.d("FCM Token", token);
+                DeviceTokenHelper deviceTokenHelper = new DeviceTokenHelper(this);
+                try {
+                    deviceTokenHelper.sendDeviceToken(token);
+                } catch (JSONException e) {
+                }
+            } else {
+                Log.e("FCM Token", "Erreur lors de la récupération du token");
+            }
+        });
+    }
+
+
+
+
 
     // Implémenter la méthode onOptionsItemSelected() pour gérer les actions de la barre d'action
     @Override
