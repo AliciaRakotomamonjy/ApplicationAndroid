@@ -4,4 +4,7 @@
         <item name="searchIcon">@drawable/ic_search_left</item>
         <item name="android:layoutDirection">rtl</item>
     </style>
+    <style name="BottomNavigationTextStyle">
+        <item name="android:fontFamily">@font/roboto_medium</item> <!-- Replace with your font resource -->
+    </style>
 </resources>
