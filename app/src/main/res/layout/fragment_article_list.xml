@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.home.HomeFragment">
 
     <ProgressBar
-        android:id="@+id/progressBarHome"
+        android:id="@+id/progressBarArticle"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="43dp"
         android:layout_height="38dp"
@@ -20,16 +21,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/homeContainer"
+        android:id="@+id/containerArticleList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/homeRecyclerView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#DDEFE3" />
+            android:orientation="vertical">
+
+            <SearchView
+                android:id="@+id/articleRecherche"
+                style="@style/SearchViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="@string/placeholderRecherche" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/articleRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+        </LinearLayout>
 
     </LinearLayout>
 
